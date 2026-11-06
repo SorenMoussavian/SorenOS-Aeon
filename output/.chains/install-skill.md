@@ -1,0 +1,1 @@
+Installed and merged AI2Human Human Execution v2.1.0 (8 skills): https://github.com/SorenMoussavian/SorenOS-Aeon/pull/1. All passed security scans and remain disabled. Enable the pack in the dashboard, configure AI2HUMAN_AGENT_KEY for dispatch/poll, then enable desired skills.
