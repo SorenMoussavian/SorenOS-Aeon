@@ -1,0 +1,74 @@
+[
+  {
+    "skill_name": "ai2human-route-task",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-route-task/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:48Z",
+    "pack": "AI2Human Human Execution"
+  },
+  {
+    "skill_name": "ai2human-digital-qa",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-digital-qa/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:48Z",
+    "pack": "AI2Human Human Execution"
+  },
+  {
+    "skill_name": "ai2human-local-verification",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-local-verification/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:49Z",
+    "pack": "AI2Human Human Execution"
+  },
+  {
+    "skill_name": "ai2human-physical-handoff",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-physical-handoff/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:49Z",
+    "pack": "AI2Human Human Execution"
+  },
+  {
+    "skill_name": "ai2human-research-compliance",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-research-compliance/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:50Z",
+    "pack": "AI2Human Human Execution"
+  },
+  {
+    "skill_name": "ai2human-social-campaign",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-social-campaign/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:50Z",
+    "pack": "AI2Human Human Execution"
+  },
+  {
+    "skill_name": "ai2human-proof-lifecycle",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-proof-lifecycle/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:51Z",
+    "pack": "AI2Human Human Execution"
+  },
+  {
+    "skill_name": "ai2human-handoff",
+    "source_repo": "richard7463/ai2human-aeon-skill-pack",
+    "source_path": "skills/ai2human-handoff/SKILL.md",
+    "branch": "main",
+    "commit_sha": "30009a8bb287b5d17cf36048fe305ee9bb9d350a",
+    "imported_at": "2026-11-06T06:49:52Z",
+    "pack": "AI2Human Human Execution"
+  }
+]

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI2Human Digital QA"
+  short_description: "Dispatch browser, device, and app reproduction work"
+  default_prompt: "Use $ai2human-digital-qa to turn this unresolved digital failure into a bounded human QA task."

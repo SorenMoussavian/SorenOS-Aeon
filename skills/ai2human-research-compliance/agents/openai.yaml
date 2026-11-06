@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI2Human Research and Compliance"
+  short_description: "Dispatch bounded review and source-checking work"
+  default_prompt: "Use $ai2human-research-compliance to create a bounded human review with source-backed evidence."

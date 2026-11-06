@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI2Human Local Verification"
+  short_description: "Dispatch location-bound checks with field proof"
+  default_prompt: "Use $ai2human-local-verification to define and dispatch this location-bound verification task."

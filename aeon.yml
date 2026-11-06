@@ -165,6 +165,14 @@ skills:
   video-script: { enabled: false, schedule: "workflow_dispatch", var: "" } # receipts-first, recording-ready video script. var: <source> [--minutes N]
   weekly-aeoncard: { enabled: false, schedule: "workflow_dispatch", var: "" } # weekly token-consumption recap card (SVG) from memory/token-usage.csv. var: window + delivery control
 
+  ai2human-route-task: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-digital-qa: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-local-verification: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-physical-handoff: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-research-compliance: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-social-campaign: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-proof-lifecycle: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-handoff: { enabled: false, schedule: "workflow_dispatch" }
   # --- Fallback (must be last) ---
   heartbeat: { enabled: true, schedule: "0 8 * * *", var: "" } # ambient fleet-health check (default) — surfaces anything worth attention. var: empty=ambient check | <area>=ambient focused on that area | brief[:<area>]=priority brief (3 things to focus on, why now, what moved; folds in priority-brief)
 
