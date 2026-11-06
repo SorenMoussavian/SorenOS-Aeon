@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI2Human Physical Handoff"
+  short_description: "Dispatch pickups, signatures, and physical errands"
+  default_prompt: "Use $ai2human-physical-handoff to structure this pickup, signature, delivery, or errand workflow."

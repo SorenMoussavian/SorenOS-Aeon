@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI2Human Proof Lifecycle"
+  short_description: "Track proof, verification, funding, and settlement"
+  default_prompt: "Use $ai2human-proof-lifecycle to inspect proof, verification, funding, and settlement without overstating completion."

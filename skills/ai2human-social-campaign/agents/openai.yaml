@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI2Human Social Campaign"
+  short_description: "Create explicit funded social campaign tasks only"
+  default_prompt: "Use $ai2human-social-campaign only for an explicit social action or campaign request with supplied links and funding."

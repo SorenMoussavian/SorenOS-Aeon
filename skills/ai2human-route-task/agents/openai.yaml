@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI2Human Task Router"
+  short_description: "Route human work to the correct execution skill"
+  default_prompt: "Use $ai2human-route-task to classify this blocked agent step and choose the correct AI2Human workflow."
