@@ -1,0 +1,84 @@
+name: SorenOS Ecosystem Health Check & Audit
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: sorenos-health-check
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Audit SorenOS Ecosystem State
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_GLOBAL || secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "aeonframework"
+          git config user.email "aeonframework@proton.me"
+
+      - name: Inspect SorenOS Ecosystem
+        env:
+          GH_TOKEN: ${{ secrets.GH_GLOBAL || secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TODAY=$(date -u +%F)
+          NOW_ISO=$(date -u +%FT%TZ)
+          mkdir -p memory/topics memory/logs
+
+          REPORT="memory/topics/sorenos-status.md"
+          echo "# SorenOS Ecosystem Status & Health Report" > "$REPORT"
+          echo "" >> "$REPORT"
+          echo "*Audited at: ${NOW_ISO}*" >> "$REPORT"
+          echo "" >> "$REPORT"
+
+          echo "## Repository Overview" >> "$REPORT"
+          echo "" >> "$REPORT"
+          echo "| Repository | Scope | Purpose |" >> "$REPORT"
+          echo "| :--- | :--- | :--- |" >> "$REPORT"
+          echo "| **SorenMoussavian/Soren.Moussavian** | Private | Core runtime, state machine & governance guards |" >> "$REPORT"
+          echo "| **SorenMoussavian/SorenOS-Aeon** | Public | Autonomous agent scheduler & skills |" >> "$REPORT"
+          echo "| **SorenMoussavian/SorenOS-PR190-Lab** | Private | Synthetic CAS lock replay & PR190 testing |" >> "$REPORT"
+          echo "| **SorenMoussavian/SorenOS-Runtime** | Private | Termux Runner transport |" >> "$REPORT"
+          echo "| **SorenMoussavian/SorenOS-Runner-Ingress** | Private | Request ingress |" >> "$REPORT"
+          echo "" >> "$REPORT"
+
+          echo "## Active Pull Requests" >> "$REPORT"
+          echo "" >> "$REPORT"
+          PRS=$(gh pr list -R SorenMoussavian/Soren.Moussavian --state open --json number,title,headRefName,updatedAt --jq '.[] | "- **PR #" + (.number|tostring) + "**: " + .title + " (`" + .headRefName + "`)"' 2>/dev/null || echo "Unable to list PRs")
+          echo "$PRS" >> "$REPORT"
+          echo "" >> "$REPORT"
+
+          echo "## Lease & Control State" >> "$REPORT"
+          echo "" >> "$REPORT"
+          META_COMMIT=$(gh api repos/SorenMoussavian/Soren.Moussavian/branches/sorenos-meta --jq '.commit.sha' 2>/dev/null || echo "unknown")
+          META_MSG=$(gh api repos/SorenMoussavian/Soren.Moussavian/commits/${META_COMMIT} --jq '.commit.message' 2>/dev/null || echo "unknown")
+          echo "- **sorenos-meta HEAD**: \`${META_COMMIT}\`" >> "$REPORT"
+          echo "- **Latest Meta Message**: \`${META_MSG}\`" >> "$REPORT"
+          echo "" >> "$REPORT"
+
+          # Publish step summary
+          cat "$REPORT" >> $GITHUB_STEP_SUMMARY
+
+      - name: Commit audit report if changed
+        shell: bash
+        run: |
+          git add memory/topics/sorenos-status.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(sorenos): update ecosystem health report [skip ci]"
+            git push
+          fi

@@ -13,11 +13,11 @@ skills:
 
   # --- Mid-morning (9 AM UTC) ---
   miroshark-matchday: { enabled: false, schedule: "0 9 * * 5", var: "" } # Friday — pays $1 USDC each (x402, Finance District wallet, $4/run cap) for one MiroShark matchday sim per league (PL, Serie A, La Liga); delivers share links + reports, renders videos on local runs. var: league subset (pl,seriea,laliga) or one custom scenario
-  pr-triage: { enabled: false, schedule: "30 9 * * *", var: "" } # first-touch external-PR triage (verdict + label + welcoming comment); var: owner/repo or owner/repo#N for one-shot
+  pr-triage: { enabled: true, schedule: "30 8 * * *", var: "" } # first-touch external-PR triage (verdict + label + welcoming comment); var: owner/repo or owner/repo#N for one-shot
   pr-review: { enabled: false, schedule: "0 9 * * *", var: "" } # var: empty/owner/repo=per-PR review (posts comments) | --survey [dry-run] [owner/repo]=risk-tiered PR triage digest (folds in pr-merge)
   auto-merge: { enabled: false, schedule: "0 14 * * *" } # merge green PRs daily at 2 PM UTC; max 3 per run
   github-filing-registry: { enabled: false, schedule: "workflow_dispatch" } # on-demand — add/status/triage/sync/log filing registry
-  github-monitor: { enabled: false, schedule: "0 9 * * *", var: "" } # watch your repos. var: empty=combined monitor (PRs/issues/releases) | issues | releases | prs | owner/repo (folds in github-issues/github-releases/pr-tracker)
+  github-monitor: { enabled: true, schedule: "0 8 * * *", var: "" } # watch your repos. var: empty=combined monitor (PRs/issues/releases) | issues | releases | prs | owner/repo (folds in github-issues/github-releases/pr-tracker)
   github-trending: { enabled: false, schedule: "0 9 * * *", var: "" } # trending repos + Hugging Face Hub. var: empty=GitHub | <lang> | hf | hf:{models,datasets,spaces}
 
   # --- Midday (12 PM UTC) ---
@@ -75,7 +75,7 @@ skills:
 
   # --- Evening / meta (6 PM UTC) ---
   strategy-builder: { enabled: false, schedule: "workflow_dispatch", var: "" } # on-demand — draft STRATEGY.md (north-star / priorities / audience / constraints) from a brief + repo README + memory. var: bare goal text, or structured brief "repo=owner/repo | links=url1,url2 | goal=free text". Powers the dashboard Strategy → Build my strategy button. No API key needed.
-  skill-health: { enabled: false, schedule: "0 18 * * *", var: "" } # self-healing health audit + analytics. var: empty=health (files/resolves issues) | <skill>=single | analytics[:hours]=fleet run/pass-rate metrics (folds in skill-analytics)
+  skill-health: { enabled: true, schedule: "0 18 * * *", var: "" } # self-healing health audit + analytics. var: empty=health (files/resolves issues) | <skill>=single | analytics[:hours]=fleet run/pass-rate metrics (folds in skill-analytics)
   aeon-doctor: { enabled: false, schedule: "0 15 * * 1", var: "" } # weekly Mon 15:00 UTC — static config-correctness linter (silent-failure class: unquoted schedules, dup keys, unconfigured-on-disk, requires-as-list, mode typo, mcp ${VAR}, multi-line entries). read-only; notifies only on problems. var: empty=whole config | <skill>=one skill
 
   self-improve: { enabled: false, schedule: "0 18 1/2 * *", var: "" } # every other day — improve the agent, or audit it. var: empty/improve[:focus]=propose+apply one fix | audit[:focus]=review what ran/failed (folds in self-review)
@@ -165,14 +165,15 @@ skills:
   video-script: { enabled: false, schedule: "workflow_dispatch", var: "" } # receipts-first, recording-ready video script. var: <source> [--minutes N]
   weekly-aeoncard: { enabled: false, schedule: "workflow_dispatch", var: "" } # weekly token-consumption recap card (SVG) from memory/token-usage.csv. var: window + delivery control
 
-  ai2human-route-task: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-route-task: { enabled: true, schedule: "0 7 * * *" }
   ai2human-digital-qa: { enabled: false, schedule: "workflow_dispatch" }
   ai2human-local-verification: { enabled: false, schedule: "workflow_dispatch" }
   ai2human-physical-handoff: { enabled: false, schedule: "workflow_dispatch" }
   ai2human-research-compliance: { enabled: false, schedule: "workflow_dispatch" }
   ai2human-social-campaign: { enabled: false, schedule: "workflow_dispatch" }
-  ai2human-proof-lifecycle: { enabled: false, schedule: "workflow_dispatch" }
+  ai2human-proof-lifecycle: { enabled: true, schedule: "0 19 * * *" }
   ai2human-handoff: { enabled: false, schedule: "workflow_dispatch" }
+  sorenos-sentinel: { enabled: true, schedule: "0 */6 * * *", var: "" } # SorenOS health monitor, lease auditor & PR status tracker
   # --- Fallback (must be last) ---
   heartbeat: { enabled: true, schedule: "0 8 * * *", var: "" } # ambient fleet-health check (default) — surfaces anything worth attention. var: empty=ambient check | <area>=ambient focused on that area | brief[:<area>]=priority brief (3 things to focus on, why now, what moved; folds in priority-brief)
 
