@@ -1,0 +1,4 @@
+interface:
+  display_name: "SorenOS Sentinel"
+  short_description: "Audit SorenOS lease state, active PRs, and synthetic lab results"
+  default_prompt: "Run $sorenos-sentinel to audit SorenOS system state, lease fences, and active PRs."
